@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-gray-950 text-gray-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200;
+    @apply overflow-x-hidden bg-gray-950 text-gray-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200;
   }
 }
 
@@ -19,5 +19,18 @@
 
   .glass {
     @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+
+  .reveal-from-bottom {
+    @apply opacity-0 translate-y-10;
+    transition: transform 0.85s ease, opacity 0.85s ease;
+  }
+
+  .reveal-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .soft-glow {
+    box-shadow: 0 0 70px rgba(59, 130, 246, 0.16);
   }
 }

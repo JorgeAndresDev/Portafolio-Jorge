@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import carrusel from "../assets/jlux-img/carrusel.png"
 import crudProducts from "../assets/jlux-img/crud-products.png"
 import indexImg from "../assets/jlux-img/index.png"
@@ -7,7 +8,6 @@ import login from "../assets/jlux-img/login.png"
 import panelAdmin from "../assets/jlux-img/Panel-admin.png"
 import product from "../assets/jlux-img/product.png"
 
-// G-Curly Imports
 import curlyDark from "../assets/g-curly-img/dark.png"
 import curlyIndex from "../assets/g-curly-img/index.png"
 import curlyRoon from "../assets/g-curly-img/roon.png"
@@ -31,308 +31,252 @@ const Projects = () => {
     }, [jluxImages.length, gcurlyImages.length])
 
     return (
-        <section id="projects" className="py-24 px-6 bg-black/20">
-            <div className="max-w-7xl mx-auto">
-                <div className="mb-16 text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                        Proyectos <span className="text-blue-500">Destacados</span>
+        <section id="projects" className="py-32 px-6 bg-[#030303] border-t border-white/20 relative z-10 overflow-hidden">
+            <div className="max-w-[1500px] mx-auto">
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-24 md:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-10"
+                >
+                    <h2 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase text-white tracking-tighter leading-none">
+                        MIS <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-800">PROYECTOS</span>.
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto">
-                        Aplicaciones completas donde aplico conceptos de arquitectura, seguridad y experiencia de usuario.
+                    <p className="text-gray-400 max-w-sm text-lg font-bold uppercase tracking-widest text-right hidden md:block">
+                        Plataformas con Arquitectura Limpia y UX Fluida.
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="space-y-24">
-                    {/* PROYECTO 1: JLUXURIES - BENTO GRID LAYOUT */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                        {/* AREA 1: Header & Description (Span 2) */}
-                        <div className="md:col-span-2 bg-gray-900 border border-white/10 rounded-3xl p-8 hover:border-blue-500/30 transition-colors shadow-lg">
-                            <div className="flex items-start justify-between mb-4">
-                                <div>
-                                    <h3 className="text-3xl font-bold text-white mb-2">JLUXURIES</h3>
-                                    <div className="flex items-center gap-3">
-                                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                        <span className="text-sm text-gray-400 font-mono">v1.0.0 Live</span>
-                                    </div>
-                                </div>
-                                <span className="px-4 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20 tracking-wider">
-                                    E-COMMERCE
-                                </span>
-                            </div>
-                            <p className="text-gray-300 leading-relaxed text-lg">
-                                Plataforma profesional para la venta de lujos y accesorios para motocicletas.
-                                Diseñada con una arquitectura escalable, integrando seguridad robusta JWT y un panel de administración completo.
-                            </p>
-                        </div>
-
-                        {/* AREA 2: Tech Stack (Span 1) */}
-                        <div className="bg-gray-900 border border-white/10 rounded-3xl p-8 hover:border-blue-500/30 transition-colors shadow-lg flex flex-col justify-center">
-                            <h4 className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-4">Tech Stack</h4>
-                            <div className="flex flex-wrap gap-2">
-                                {["React", "FastAPI", "MySQL", "Tailwind", "Python", "Vite"].map(tag => (
-                                    <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-medium text-blue-200">
-                                        {tag}
+                <div className="space-y-40">
+                    {/* PROYECTO 1: JLUXURIES */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6 }}
+                        className="flex flex-col gap-6"
+                    >
+                        {/* Top Info Bar */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div className="lg:col-span-2 bg-cyan-500 rounded-[2rem] p-8 md:p-12 flex flex-col justify-between hover:scale-[1.01] transition-transform origin-left">
+                                <div className="flex justify-between items-start gap-4">
+                                    <h3 className="text-5xl lg:text-7xl font-black text-black uppercase tracking-tighter leading-none">JLUXURIES<br/>STORE</h3>
+                                    <span className="px-4 py-2 bg-black text-cyan-400 text-xs font-black uppercase tracking-widest rounded-full border border-cyan-400/30 whitespace-nowrap">
+                                        E-COMMERCE
                                     </span>
-                                ))}
+                                </div>
+                                <p className="mt-8 text-black/80 font-bold text-xl md:text-2xl leading-relaxed max-w-2xl">
+                                    Plataforma profesional con panel admin, Auth JWT y carrito optimizado.
+                                </p>
+                            </div>
+                            
+                            <div className="bg-gray-950 border border-white/20 rounded-[2rem] p-8 md:p-12 flex flex-col justify-center">
+                                <h4 className="text-white text-sm font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Características</h4>
+                                <ul className="space-y-5">
+                                    {["Rutas Protegidas (RBAC)", "API RESTful Rápida", "Gestión de Inventario"].map((feature, i) => (
+                                        <li key={i} className="flex items-center text-gray-400 text-sm md:text-base font-bold uppercase tracking-widest">
+                                            <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 mr-4 shrink-0" />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t border-white/10">
+                                    {["React", "FastAPI", "MySQL", "Tailwind"].map(tag => (
+                                        <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-black text-white uppercase tracking-widest">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
-                        {/* AREA 3: Carousel (Span 2, Row 2) */}
-                        <div className="md:col-span-2 md:row-span-2 relative min-h-[400px] rounded-3xl overflow-hidden border border-white/10 group shadow-2xl">
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500" />
-
+                        {/* Massive Image Container */}
+                        <div className="relative w-full h-[50vh] min-h-[400px] lg:h-[80vh] lg:min-h-[700px] rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl bg-black/40 flex items-center justify-center p-4">
                             {jluxImages.map((img, index) => (
                                 <img
                                     key={index}
                                     src={img}
-                                    alt={`Preview ${index}`}
-                                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out ${index === jluxIndex
-                                        ? "opacity-100 scale-105"
-                                        : "opacity-0 scale-100"
-                                        }`}
+                                    alt={`Vista ${index}`}
+                                    className={`absolute inset-0 w-full h-full object-contain p-2 md:p-8 lg:p-12 transition-all duration-[2000ms] ease-out drop-shadow-2xl ${index === jluxIndex ? "opacity-100 scale-100 filter-none" : "opacity-0 scale-95 blur-sm"}`}
                                 />
                             ))}
-
-                            {/* Custom Indicators */}
-                            <div className="absolute bottom-6 left-6 z-20 flex gap-2">
+                            {/* Gradient strictly at bottom so it doesn't obscure the center app image */}
+                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none opacity-80" />
+                            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20 bg-black/50 p-4 rounded-full backdrop-blur-md border border-white/10">
                                 {jluxImages.map((_, index) => (
-                                    <div
-                                        key={index}
-                                        className={`h-1.5 rounded-full transition-all duration-300 backdrop-blur-md ${index === jluxIndex ? "bg-white w-8 shadow-[0_0_10px_rgba(255,255,255,0.5)]" : "bg-white/30 w-2"
-                                            }`}
-                                    />
+                                    <div key={index} className={`h-2.5 rounded-full transition-all duration-300 ${index === jluxIndex ? "bg-cyan-400 w-16" : "bg-white/30 w-4 cursor-pointer hover:bg-white/60"}`} onClick={() => setJluxIndex(index)} />
                                 ))}
                             </div>
-                        </div>
-
-                        {/* AREA 4: Features List (Span 1) */}
-                        <div className="bg-gray-900 border border-white/10 rounded-3xl p-8 hover:border-blue-500/30 transition-colors shadow-lg">
-                            <h4 className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-4">Features</h4>
-                            <ul className="space-y-3">
-                                {[
-                                    "Autenticación JWT",
-                                    "Rutas Protegidas (RBAC)",
-                                    "Carrito de Compras",
-                                    "Panel Administrativo",
-                                    "API RESTful"
-                                ].map((feature, i) => (
-                                    <li key={i} className="flex items-center text-gray-300 text-sm">
-                                        <svg className="w-5 h-5 text-blue-500 mr-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* AREA 5: Actions (Span 1) */}
-                        <div className="bg-gradient-to-br from-blue-900/40 to-gray-900 border border-blue-500/20 rounded-3xl p-8 flex flex-col justify-center items-center gap-4 text-center">
-                            <p className="text-blue-200 text-sm mb-2">Explora el código</p>
+                            
                             <button
                                 onClick={() => setActiveProject('jluxuries')}
-                                className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold rounded-xl transition cursor-pointer flex items-center justify-center gap-2 group"
+                                className="absolute top-8 right-8 z-20 py-4 px-8 bg-cyan-500 hover:bg-cyan-400 text-black font-black uppercase tracking-widest rounded-full transition-all hover:scale-105 active:scale-95 shadow-2xl"
                             >
-                                <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-                                Repositorio
+                                CÓDIGO FUENTE
                             </button>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    {/* PROYECTO 2: G-CURLY - BENTO GRID LAYOUT */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                        {/* AREA 1: Header & Description (Span 2) */}
-                        <div className="md:col-span-2 bg-gray-900 border border-white/10 rounded-3xl p-8 hover:border-green-500/30 transition-colors shadow-lg">
-                            <div className="flex items-start justify-between mb-4">
-                                <div>
-                                    <h3 className="text-3xl font-bold text-white mb-2">G-Curly</h3>
-                                    <div className="flex items-center gap-3">
-                                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                        <span className="text-sm text-gray-400 font-mono">v1.0.0 Live</span>
-                                    </div>
-                                </div>
-                                <span className="px-4 py-1.5 bg-green-500/10 text-green-400 text-xs font-bold rounded-full border border-green-500/20 tracking-wider">
-                                    BRANDING & SPA
-                                </span>
-                            </div>
-                            <p className="text-gray-300 leading-relaxed text-lg">
-                                Marca dedicada a celebrar la belleza natural del cabello rizado, afro y crespo.
-                                Modelo de negocio dual con tienda especializada y salón profesional.
-                            </p>
-                        </div>
-
-                        {/* AREA 2: Tech Stack (Span 1) */}
-                        <div className="bg-gray-900 border border-white/10 rounded-3xl p-8 hover:border-green-500/30 transition-colors shadow-lg flex flex-col justify-center">
-                            <h4 className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-4">Tech Stack</h4>
-                            <div className="flex flex-wrap gap-2">
-                                {["React 19", "Vite", "Tailwind 3.4", "Router DOM 7", "ESLint"].map(tag => (
-                                    <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-medium text-green-200">
-                                        {tag}
+                    {/* PROYECTO 2: G-CURLY */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6 }}
+                        className="flex flex-col gap-6"
+                    >
+                        {/* Top Info Bar */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div className="lg:col-span-2 bg-violet-600 rounded-[2rem] p-8 md:p-12 flex flex-col justify-between hover:scale-[1.01] transition-transform origin-right">
+                                <div className="flex justify-between items-start gap-4">
+                                    <h3 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-none">G-CURLY<br/>BRAND</h3>
+                                    <span className="px-4 py-2 bg-black text-violet-400 text-xs font-black uppercase tracking-widest rounded-full border border-violet-400/30 whitespace-nowrap">
+                                        BRANDING SPA
                                     </span>
-                                ))}
+                                </div>
+                                <p className="mt-8 text-white/90 font-bold text-xl md:text-2xl leading-relaxed max-w-2xl">
+                                    E-commerce y sitio web para centro de belleza enfocado en conversión.
+                                </p>
+                            </div>
+                            
+                            <div className="bg-gray-950 border border-white/20 rounded-[2rem] p-8 md:p-12 flex flex-col justify-center">
+                                <h4 className="text-white text-sm font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Características</h4>
+                                <ul className="space-y-5">
+                                    {["Dark/Light Mode Activo", "Navegación Sticky", "Mobile First"].map((feature, i) => (
+                                        <li key={i} className="flex items-center text-gray-400 text-sm md:text-base font-bold uppercase tracking-widest">
+                                            <div className="w-2.5 h-2.5 rounded-full bg-violet-500 mr-4 shrink-0" />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t border-white/10">
+                                    {["React 19", "Vite", "Router 7", "Tailwind"].map(tag => (
+                                        <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-black text-white uppercase tracking-widest">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
-                        {/* AREA 3: Carousel (Span 2, Row 2) */}
-                        <div className="md:col-span-2 md:row-span-2 relative min-h-[400px] rounded-3xl overflow-hidden border border-white/10 group shadow-2xl">
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500" />
-
-                            {/*  G-Curly Carousel */}
+                        {/* Massive Image Container */}
+                        <div className="relative w-full h-[50vh] min-h-[400px] lg:h-[80vh] lg:min-h-[700px] rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl bg-black/40 flex items-center justify-center p-4 group">
                             {gcurlyImages.map((img, index) => (
                                 <img
                                     key={index}
                                     src={img}
-                                    alt={`G-Curly Preview ${index}`}
-                                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out ${index === gcurlyIndex
-                                        ? "opacity-100 scale-105"
-                                        : "opacity-0 scale-100"
-                                        }`}
+                                    alt={`G-Curly ${index}`}
+                                    className={`absolute inset-0 w-full h-full object-contain p-2 md:p-8 lg:p-12 transition-all duration-[2000ms] ease-out drop-shadow-2xl ${index === gcurlyIndex ? "opacity-100 scale-100 filter-none" : "opacity-0 scale-95 blur-sm"}`}
                                 />
                             ))}
-
-                            {/* Custom Indicators */}
-                            <div className="absolute bottom-6 left-6 z-20 flex gap-2">
+                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none opacity-80" />
+                            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20 bg-black/50 p-4 rounded-full backdrop-blur-md border border-white/10">
                                 {gcurlyImages.map((_, index) => (
-                                    <div
-                                        key={index}
-                                        className={`h-1.5 rounded-full transition-all duration-300 backdrop-blur-md ${index === gcurlyIndex ? "bg-white w-8 shadow-[0_0_10px_rgba(255,255,255,0.5)]" : "bg-white/30 w-2"
-                                            }`}
-                                    />
+                                    <div key={index} className={`h-2.5 rounded-full transition-all duration-300 ${index === gcurlyIndex ? "bg-violet-400 w-16" : "bg-white/30 w-4 cursor-pointer hover:bg-white/60"}`} onClick={() => setGcurlyIndex(index)} />
                                 ))}
                             </div>
-                        </div>
 
-                        {/* AREA 4: Features List (Span 1) */}
-                        <div className="bg-gray-900 border border-white/10 rounded-3xl p-8 hover:border-green-500/30 transition-colors shadow-lg">
-                            <h4 className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-4">Features</h4>
-                            <ul className="space-y-3">
-                                {[
-                                    "Dark/Light Mode",
-                                    "Diseño Mobile First",
-                                    "Integración WhatsApp",
-                                    "Navegación Sticky",
-                                    "Gestión Rutas Activas"
-                                ].map((feature, i) => (
-                                    <li key={i} className="flex items-center text-gray-300 text-sm">
-                                        <svg className="w-5 h-5 text-green-500 mr-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="absolute top-8 right-8 z-20 flex flex-col md:flex-row gap-4">
+                                <a
+                                    href="https://graceful-swan-243221.netlify.app/"
+                                    target="_blank"
+                                    className="py-4 px-8 bg-violet-600 hover:bg-violet-500 text-white font-black uppercase tracking-widest rounded-full transition-all hover:scale-105 active:scale-95 shadow-2xl text-center"
+                                >
+                                    SITIO WEB
+                                </a>
+                                <button
+                                    onClick={() => setActiveProject('gcurly')}
+                                    className="py-4 px-8 bg-black/50 backdrop-blur-xl border border-white/20 hover:border-white text-white font-black uppercase tracking-widest rounded-full transition-all hover:scale-105 active:scale-95 shadow-2xl"
+                                >
+                                    CÓDIGO
+                                </button>
+                            </div>
                         </div>
+                    </motion.div>
 
-                        {/* AREA 5: Actions (Span 1) */}
-                        <div className="bg-gradient-to-br from-green-900/40 to-gray-900 border border-green-500/20 rounded-3xl p-8 flex flex-col justify-center items-center gap-4 text-center">
-                            <p className="text-green-200 text-sm mb-2">Explora la identidad de la marca</p>
-                            <a
-                                href="https://graceful-swan-243221.netlify.app/"
-                                target="_blank"
-                                className="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition shadow-lg shadow-green-600/20 transform hover:scale-[1.02] active:scale-[0.98]"
-                            >
-                                Ver Sitio
-                            </a>
-                            <a
-                                href="https://github.com/JorgeAndresDev/G-curly.git"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold rounded-xl transition cursor-pointer flex items-center justify-center gap-2 group"
-                            >
-                                <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-                                Repositorio
-                            </a>
+                    {/* PROYECTO 3: CobraGO */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-gray-950 border-[3px] border-dashed border-white/20 rounded-[2rem] p-12 lg:p-20 flex flex-col md:flex-row items-center justify-between gap-10 hover:border-orange-500 transition-colors group relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 right-0 w-full h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.02)_10px,rgba(255,255,255,0.02)_20px)] pointer-events-none"></div>
+                        <div className="flex-1 relative z-10">
+                            <div className="flex items-center gap-6 mb-8">
+                                <h3 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter group-hover:text-orange-500 transition-colors leading-none">COBRAGO</h3>
+                                <div className="flex h-5 w-5 relative shrink-0">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-5 w-5 bg-orange-500"></span>
+                                </div>
+                            </div>
+                            <p className="text-xl md:text-2xl font-bold uppercase tracking-widest text-gray-400 max-w-2xl leading-relaxed group-hover:text-white transition-colors">
+                                App móvil para el control integral de finanzas y cobros. Sincronización en tiempo real con UI inmersiva.
+                            </p>
                         </div>
-                    </div>
-                    {/* View All Projects Button */}
-                    <div className="flex justify-center mt-16">
-                        <a
-                            href="https://github.com/JorgeAndresDev/"
-                            target="_blank"
-                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gray-900 border border-white/10 hover:border-blue-500/50 rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]"
-                        >
-                            <span className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <span className="relative font-bold text-gray-300 group-hover:text-white">Ver todos mis proyectos</span>
-                            <svg className="w-5 h-5 text-blue-500 group-hover:translate-x-1 transition-transform relative" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
+                        <div className="shrink-0 relative z-10 hidden md:block">
+                            <div className="w-48 h-48 rounded-[2rem] border-2 border-orange-500/30 flex items-center justify-center text-orange-500 font-black text-2xl md:text-4xl uppercase tracking-tighter bg-orange-500/10 group-hover:scale-105 group-hover:-rotate-6 transition-all text-center leading-[0.8]">
+                                PRÓXI<br/>MAMENTE
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+
+                <div className="mt-40 border-t border-white/20 pt-16 flex justify-center">
+                    <a
+                        href="https://github.com/JorgeAndresDev/"
+                        target="_blank"
+                        className="text-4xl md:text-6xl font-black uppercase text-white hover:text-cyan-400 transition-colors tracking-tighter flex items-center gap-6 group"
+                    >
+                        VER TODOS LOS CÓDIGOS
+                        <span className="bg-white text-black w-20 h-20 flex items-center justify-center rounded-full group-hover:bg-cyan-400 group-hover:scale-110 transition-all text-3xl">↗</span>
+                    </a>
                 </div>
             </div>
 
-            {/* Repository Modal */}
+            {/* Modal */}
             {activeProject && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 animate-fade-in"
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-2xl p-4"
                     onClick={() => setActiveProject(null)}
                 >
                     <div
-                        className="bg-gray-900 border border-white/10 rounded-3xl p-8 max-w-md w-full shadow-2xl relative overflow-hidden"
+                        className="bg-black border-2 border-white/20 p-12 w-full max-w-2xl shadow-[0_0_100px_rgba(0,0,0,1)] relative"
                         onClick={e => e.stopPropagation()}
                     >
-                        <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${activeProject === 'jluxuries'
-                            ? "from-blue-500 via-purple-500 to-pink-500"
-                            : "from-green-500 via-teal-500 to-emerald-500"
-                            }`} />
                         <button
                             onClick={() => setActiveProject(null)}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-white transition p-2 hover:bg-white/10 rounded-full"
+                            className="absolute top-8 right-8 text-3xl font-black text-gray-500 hover:text-white hover:rotate-90 transition-all"
                         >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            ✕
                         </button>
 
-                        <h3 className="text-2xl font-bold text-white mb-2 text-center">
-                            {activeProject === 'jluxuries' ? 'JLUXURIES Repos' : 'G-Curly Repos'}
+                        <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-12 text-center md:text-left">
+                            CÓDIGO FUENTE DE<br/>
+                            <span className="text-gray-500">{activeProject === 'jluxuries' ? 'JLUXURIES' : 'G-CURLY'}</span>
                         </h3>
-                        <p className="text-gray-400 text-center mb-8 text-sm">
-                            Selecciona la parte del proyecto que deseas explorar.
-                        </p>
 
-                        <div className="space-y-3">
+                        <div className="space-y-6">
                             <a
                                 href={activeProject === 'jluxuries' ? "https://github.com/JorgeAndresDev/JLUXURIES-API.git" : "#"}
                                 target="_blank"
-                                className={`block w-full py-4 px-6 bg-gray-800 hover:bg-gray-750 border border-gray-700 rounded-2xl transition-all group hover:shadow-lg ${activeProject === 'jluxuries'
-                                    ? "hover:border-blue-500/50 hover:shadow-blue-900/20"
-                                    : "hover:border-green-500/50 hover:shadow-green-900/20"
-                                    }`}
+                                className="block w-full py-8 px-10 border-4 border-white/10 hover:border-cyan-400 bg-[#050505] transition-all group hover:scale-[1.02]"
                             >
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-4">
-                                        <div className={`p-2.5 rounded-xl ${activeProject === 'jluxuries' ? "bg-blue-500/10 text-blue-400" : "bg-green-500/10 text-green-400"
-                                            }`}>
-                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
-                                        </div>
-                                        <div className="text-left">
-                                            <span className="block text-white font-bold">Backend (API)</span>
-                                            <span className="text-xs text-gray-500 font-mono">
-                                                {activeProject === 'jluxuries' ? "FastAPI • Python • MySQL" : "Python • Django (TBD)"}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <span className="text-gray-600 group-hover:text-white transition transform group-hover:translate-x-1">→</span>
+                                <div className="flex justify-between items-center text-white font-black text-xl md:text-2xl uppercase tracking-widest">
+                                    <span>Backend API</span>
+                                    <span className="text-cyan-500 group-hover:translate-x-4 transition-transform text-4xl leading-none">→</span>
                                 </div>
                             </a>
 
                             <a
                                 href={activeProject === 'jluxuries' ? "https://github.com/JorgeAndresDev/JLUXURIES-Front" : "#"}
                                 target="_blank"
-                                className={`block w-full py-4 px-6 bg-gray-800 hover:bg-gray-750 border border-gray-700 rounded-2xl transition-all group hover:shadow-lg ${activeProject === 'jluxuries'
-                                    ? "hover:border-purple-500/50 hover:shadow-purple-900/20"
-                                    : "hover:border-teal-500/50 hover:shadow-teal-900/20"
-                                    }`}
+                                className="block w-full py-8 px-10 border-4 border-white/10 hover:border-violet-400 bg-[#050505] transition-all group hover:scale-[1.02]"
                             >
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-4">
-                                        <div className={`p-2.5 rounded-xl ${activeProject === 'jluxuries' ? "bg-purple-500/10 text-purple-400" : "bg-teal-500/10 text-teal-400"
-                                            }`}>
-                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                                        </div>
-                                        <div className="text-left">
-                                            <span className="block text-white font-bold">Frontend (Client)</span>
-                                            <span className="text-xs text-gray-500 font-mono">
-                                                {activeProject === 'jluxuries' ? "React • Tailwind • Vite" : "React 19 • Vite • Tailwind 3.4"}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <span className="text-gray-600 group-hover:text-white transition transform group-hover:translate-x-1">→</span>
+                                <div className="flex justify-between items-center text-white font-black text-xl md:text-2xl uppercase tracking-widest">
+                                    <span>Frontend WEB</span>
+                                    <span className="text-violet-500 group-hover:translate-x-4 transition-transform text-4xl leading-none">→</span>
                                 </div>
                             </a>
                         </div>

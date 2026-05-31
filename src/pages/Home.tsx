@@ -1,112 +1,145 @@
+import { useRef } from "react"
 import Projects from "../components/Projects"
 import About from "../components/About"
 import Skills from "../components/Skills"
+import ScrollReveal from "../components/ScrollReveal"
+import useScrollSection from "../hooks/useScrollSection"
 import cvFile from "../assets/cv/Jorge_Gomez_CV.pdf"
+import Marquee from "react-fast-marquee"
 
 const Home = () => {
-    return (
-        <>
-            {/* Hero Section */}
-            <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-                {/* Background Glows */}
-                <div className="absolute top-20 left-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-[100px]" />
-                <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-[100px]" />
+  const homeRef = useRef<HTMLElement>(null)
+  const heroProgress = useScrollSection(homeRef)
+  const heroTransform = `translateY(${heroProgress * 28}px)`
+  const heroOpacity = 1 - heroProgress * 0.28
 
-                <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-                    <div className="inline-block mb-4 px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full animate-fade-in">
-                        <span className="text-cyan-400 text-sm font-medium">✨ Potenciando ideas con código</span>
+  return (
+    <>
+      <section id="home" ref={homeRef} className="relative min-h-screen overflow-hidden pt-24">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_10%,transparent_100%)]"></div>
+        </div>
+
+        <div
+          style={{ transform: heroTransform, opacity: heroOpacity }}
+          className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-[1400px] flex-col gap-10 px-6 py-12 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] justify-center items-start"
+        >
+          <ScrollReveal className="w-full">
+            <span className="inline-flex rounded-full bg-cyan-500/10 px-4 py-2 text-xs md:text-sm font-semibold text-cyan-300 tracking-[0.28em] uppercase border border-cyan-500/20">
+              JORGE GÓMEZ DEV
+            </span>
+            <h1 className="mt-6 text-[13vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] leading-[0.85] font-black tracking-tighter text-white uppercase mix-blend-difference">
+              DISEÑO 
+              <br />
+              <span className="text-cyan-400">Y DESARROLLO</span>
+              <br />
+              SOLUCIONES
+            </h1>
+            <p className="mt-8 text-lg sm:text-xl lg:text-2xl leading-relaxed text-slate-300 max-w-2xl font-medium">
+              Desarrollador <strong className="text-white">Full Stack</strong>. Mi trabajo se enfoca en rendimiento, APIs seguras y proyectos que escalan, brindando una experiencia premium desde el inicio.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a href="#projects" className="inline-flex items-center justify-center rounded-full bg-cyan-500 px-8 py-4 text-sm md:text-base font-bold text-slate-950 transition hover:bg-cyan-400 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+                VER TRABAJOS
+              </a>
+              <a href={cvFile} download="Jorge_Gomez_CV.pdf" className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm md:text-base font-bold text-white transition hover:border-white hover:bg-white/10 hover:scale-105 active:scale-95">
+                DESCARGAR CV
+              </a>
+            </div>
+
+            <div className="mt-16 border-y border-white/10 py-6 w-full -mx-6 px-6 md:mx-0 md:px-0">
+                <Marquee gradient={false} speed={50} className="w-full overflow-hidden">
+                    <div className="flex items-center gap-10 opacity-70">
+                        {["REACT 19", "TYPESCRIPT", "FASTAPI", "TAILWIND V4", "THREE.JS", "PYTHON", "MYSQL", "GSAP / MOTION"].map((tech, i) => (
+                            <span key={i} className="text-2xl md:text-4xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-300 mx-8 uppercase">
+                                {tech}
+                            </span>
+                        ))}
                     </div>
+                </Marquee>
+            </div>
+          </ScrollReveal>
 
-                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-                        Jorge Andrés <br />
-                        <span className="text-gradient">Gómez Díaz</span>
-                    </h1>
+          <ScrollReveal className="w-full border-[3px] border-white/10 bg-black relative overflow-hidden group hover:border-cyan-500/50 transition-colors mt-12 md:mt-24">
+            {/* Grid Pattern Background behind the card */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-50 pointer-events-none"></div>
+            
+            <div className="flex flex-col lg:flex-row w-full relative z-10">
+              <div className="bg-[#050505] p-10 md:p-16 lg:w-1/3 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/20 hover:bg-white/5 transition-colors group/left">
+                <span className="inline-block bg-cyan-500 text-black px-4 py-2 text-xs md:text-sm font-black uppercase tracking-widest mb-8 w-max group-hover/left:scale-110 transition-transform">
+                  DESTACADOS
+                </span>
+                <h2 className="text-5xl md:text-6xl font-black text-white uppercase tracking-tighter leading-none mb-6">PROYECTOS<br/>CON RITMO.</h2>
+                <p className="text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base leading-relaxed">
+                  Sistemas elegantes, de alta conversión y con panel de control.
+                </p>
+              </div>
 
-                    <h2 className="text-2xl md:text-3xl text-gray-200 font-semibold mb-6">
-                        Desarrollador Web & Backend
-                    </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:w-2/3 p-6 md:p-10 gap-6 md:gap-8 bg-black/60 backdrop-blur-sm">
+                {[
+                  { title: "Seguridad API", description: "Protección JWT" },
+                  { title: "UX Premium", description: "Interacciones 60fps" },
+                  { title: "Arquitectura", description: "Escalabilidad asegurada" },
+                  { title: "Animaciones", description: "Motion & GSAP" },
+                ].map((item) => (
+                  <div key={item.title} className="border-2 border-white/20 bg-[#050505] p-8 md:p-10 hover:bg-cyan-500 hover:text-black hover:-translate-y-2 hover:translate-x-2 hover:shadow-[-12px_12px_0_0_rgba(255,255,255,0.2)] transition-all duration-300 group/item cursor-pointer flex flex-col justify-center">
+                    <p className="text-white group-hover/item:text-black font-black uppercase tracking-widest text-2xl md:text-3xl mb-4 leading-none">{item.title}</p>
+                    <p className="text-xs md:text-sm font-bold text-gray-500 group-hover/item:text-black/70 uppercase tracking-widest">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
 
-                    <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                        Desarrollador de software con experiencia en React, FastAPI y SQL.
-                        Construyo soluciones digitales seguras, escalables y de alto rendimiento.
-                    </p>
+        </div>
 
-                    <div className="flex flex-wrap gap-4 justify-center items-center mt-8">
-                        <a
-                            href="#projects"
-                            className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(37,99,235,0.3)] flex items-center gap-2"
-                        >
-                            Ver proyectos
-                        </a>
+        <div className="absolute left-1/2 bottom-10 -translate-x-1/2 text-center opacity-90">
+          <div className="flex flex-col items-center gap-3 text-sm text-gray-300">
+            <span className="uppercase tracking-[0.3em] text-white/70">Scroll</span>
+            <div className="h-14 w-10 rounded-full border border-white/20 p-1">
+              <span className="block h-2 w-2 rounded-full bg-white animate-bounce" />
+            </div>
+          </div>
+        </div>
+      </section>
 
-                        <a
-                            href="#contact"
-                            className="px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-full font-semibold transition-all hover:scale-105 backdrop-blur-sm"
-                        >
-                            Contactar
-                        </a>
+      <About />
+      <Skills />
+      <Projects />
 
-                        <div className="w-px h-12 bg-white/10 hidden sm:block mx-2" />
+      <section id="contact" className="relative py-32 px-6 bg-cyan-500 overflow-hidden text-black selection:bg-black selection:text-cyan-500">
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none opacity-20 pointer-events-none">
+          <Marquee speed={80} autoFill>
+            <span className="text-[20vw] font-black uppercase tracking-tighter whitespace-nowrap mx-8">
+              TRABAJEMOS JUNTOS
+            </span>
+          </Marquee>
+        </div>
 
-                        <a
-                            href={cvFile}
-                            download="Jorge_Gomez_CV.pdf"
-                            className="group flex items-center gap-2 px-6 py-3.5 bg-gray-900/80 hover:bg-gray-800 text-gray-300 hover:text-white rounded-full border border-gray-700 hover:border-blue-500/50 transition-all hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
-                        >
-                            <svg className="w-5 h-5 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                            <span>CV</span>
-                        </a>
+        <div className="relative z-10 max-w-[1400px] mx-auto min-h-[50vh] flex flex-col justify-center items-center text-center mt-24">
+          <p className="text-sm md:text-base uppercase tracking-[0.4em] font-bold mb-6 border border-black px-6 py-2 rounded-full">
+            ESTÁS LISTO PARA INICIAR?
+          </p>
+          <h2 className="text-6xl sm:text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-12 mix-blend-color-burn">
+            DISEÑEMOS <br/>
+            TU PRÓXIMA <br/>
+            <span className="text-white mix-blend-normal">PLATAFORMA</span>.
+          </h2>
 
-                        <a
-                            href="https://github.com/JorgeAndresDev"
-                            target="_blank"
-                            aria-label="GitHub Profile"
-                            className="p-3.5 bg-gray-900/80 hover:bg-gray-800 text-white rounded-full border border-gray-700 hover:border-blue-500/50 transition-all hover:scale-110 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
-                        >
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <About />
-
-            <Skills />
-
-            <Projects />
-
-            {/* Contact Section */}
-            <section id="contact" className="py-24 px-6 relative bg-gray-950/80">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-gradient-to-r from-cyan-500/5 to-purple-500/5 blur-3xl pointer-events-none" />
-
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6">¿Hablamos?</h2>
-                    <p className="text-gray-400 mb-10 max-w-xl mx-auto text-lg">
-                        Estoy disponible para unirme a equipos ambiciosos y aportar valor desde el primer día. Si buscas un desarrollador comprometido, contáctame.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                        <a href="mailto:jorgeandresg1207@gmail.com" className="flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-transform hover:scale-105">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            Enviar Correo
-                        </a>
-
-                        <a
-                            href="https://www.linkedin.com/in/jorge-andresdev"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-8 py-4 bg-blue-700/20 text-blue-400 border border-blue-500/30 font-bold rounded-full hover:bg-blue-700/30 transition-transform hover:scale-105"
-                        >
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                            LinkedIn
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </>
-    )
+          <div className="flex flex-col sm:flex-row gap-6 w-full max-w-xl justify-center mt-8">
+            <a href="mailto:jorgeandresg1207@gmail.com" className="group rounded-full bg-black px-10 py-6 font-black text-white text-xl transition-transform hover:scale-110 active:scale-95 shadow-2xl flex-1 uppercase tracking-wider flex items-center justify-center gap-3">
+              <span className="group-hover:animate-bounce">✉</span>
+              Contáctame
+            </a>
+            <a href="https://www.linkedin.com/in/jorge-andresdev" target="_blank" rel="noreferrer" className="rounded-full border-4 border-black px-10 py-6 font-black text-black text-xl transition hover:bg-black hover:text-white flex-1 uppercase tracking-wider flex items-center justify-center">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
 
 export default Home
