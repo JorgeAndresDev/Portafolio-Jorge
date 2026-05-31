@@ -52,7 +52,7 @@ export const Experience = () => {
       <directionalLight position={[10, 10, 5]} intensity={1} color="#ffffff" />
       <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#00ffff" />
 
-      <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={0.5} opacity={0.5} />
+      <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={0.5} />
 
       <Float speed={1.5} rotationIntensity={1} floatIntensity={1.5}>
         <Box ref={cube1Ref} args={[3, 3, 3]} position={[0, -0.5, -4]}>
