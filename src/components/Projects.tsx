@@ -1,12 +1,12 @@
-
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useMemo } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import carrusel from "../assets/jlux-img/carrusel.png"
 import crudProducts from "../assets/jlux-img/crud-products.png"
 import indexImg from "../assets/jlux-img/index.png"
 import login from "../assets/jlux-img/login.png"
 import panelAdmin from "../assets/jlux-img/Panel-admin.png"
 import product from "../assets/jlux-img/product.png"
+import jluxLogo from "../assets/jlux-img/logo-jluxuries.png"
 
 import curlyDark from "../assets/g-curly-img/dark.png"
 import curlyIndex from "../assets/g-curly-img/index.png"
@@ -14,21 +14,39 @@ import curlyRoon from "../assets/g-curly-img/roon.png"
 import curlyRutine from "../assets/g-curly-img/rutine.png"
 import curlyStore from "../assets/g-curly-img/store.png"
 
+// CobraGO Images
+import cobraLogo from "../assets/cobrago-img/logo-cobrago.png"
+import cobra1 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.08 PM.jpeg"
+import cobra2 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.08 PM (1).jpeg"
+import cobra3 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.08 PM (2).jpeg"
+import cobra4 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.09 PM.jpeg"
+import cobra5 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.09 PM (1).jpeg"
+import cobra6 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.10 PM.jpeg"
+import cobra7 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.10 PM (1).jpeg"
+import cobra8 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.10 PM (2).jpeg"
+import cobra9 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.10 PM (3).jpeg"
+import cobra10 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.10 PM (4).jpeg"
+import cobra11 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.11 PM.jpeg"
+import cobra12 from "../assets/cobrago-img/WhatsApp Image 2026-06-09 at 9.52.11 PM (1).jpeg"
+
 const Projects = () => {
     const [activeProject, setActiveProject] = useState<string | null>(null)
     const [jluxIndex, setJluxIndex] = useState(0)
     const [gcurlyIndex, setGcurlyIndex] = useState(0)
+    const [cobraIndex, setCobraIndex] = useState(0)
 
-    const jluxImages = [indexImg, login, product, panelAdmin, crudProducts, carrusel]
-    const gcurlyImages = [curlyIndex, curlyDark, curlyStore, curlyRutine, curlyRoon]
+    const jluxImages = useMemo(() => [indexImg, login, product, panelAdmin, crudProducts, carrusel], [])
+    const gcurlyImages = useMemo(() => [curlyIndex, curlyDark, curlyStore, curlyRutine, curlyRoon], [])
+    const cobraImages = useMemo(() => [cobra1, cobra2, cobra3, cobra4, cobra5, cobra6, cobra7, cobra8, cobra9, cobra10, cobra11, cobra12], [])
 
     useEffect(() => {
         const interval = setInterval(() => {
             setJluxIndex((prev) => (prev + 1) % jluxImages.length)
             setGcurlyIndex((prev) => (prev + 1) % gcurlyImages.length)
-        }, 3000)
+            setCobraIndex((prev) => (prev + 1) % cobraImages.length)
+        }, 4000) // Slightly slower for better UX
         return () => clearInterval(interval)
-    }, [jluxImages.length, gcurlyImages.length])
+    }, [jluxImages.length, gcurlyImages.length, cobraImages.length])
 
     return (
         <section id="projects" className="py-32 px-6 bg-[#030303] border-t border-white/20 relative z-10 overflow-hidden">
@@ -58,31 +76,32 @@ const Projects = () => {
                     >
                         {/* Top Info Bar */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                            <div className="lg:col-span-2 bg-cyan-500 rounded-[2rem] p-8 md:p-12 flex flex-col justify-between hover:scale-[1.01] transition-transform origin-left">
-                                <div className="flex justify-between items-start gap-4">
-                                    <h3 className="text-5xl lg:text-7xl font-black text-black uppercase tracking-tighter leading-none">JLUXURIES<br/>STORE</h3>
-                                    <span className="px-4 py-2 bg-black text-cyan-400 text-xs font-black uppercase tracking-widest rounded-full border border-cyan-400/30 whitespace-nowrap">
+                            <div className="lg:col-span-2 bg-cyan-500 border-[3px] border-black p-8 md:p-12 flex flex-col justify-between hover:scale-[1.01] transition-transform origin-left relative overflow-hidden group/card shadow-[-10px_10px_0px_0px_rgba(34,211,238,0.2)]">
+                                <img src={jluxLogo} alt="Logo JLuxuries" className="absolute -right-10 -bottom-10 w-64 opacity-10 group-hover/card:scale-110 transition-transform duration-1000 pointer-events-none will-change-transform" />
+                                <div className="flex justify-between items-start gap-4 relative z-10">
+                                    <h3 className="text-5xl lg:text-7xl font-black text-black uppercase tracking-tighter leading-[0.8] mb-4">JLUXURIES<br/>STORE</h3>
+                                    <span className="px-4 py-2 bg-black text-cyan-400 text-xs font-black uppercase tracking-widest border border-cyan-400/30 whitespace-nowrap">
                                         E-COMMERCE
                                     </span>
                                 </div>
-                                <p className="mt-8 text-black/80 font-bold text-xl md:text-2xl leading-relaxed max-w-2xl">
+                                <p className="mt-8 text-black/80 font-black text-xl md:text-2xl leading-tight max-w-2xl relative z-10 uppercase italic">
                                     Plataforma profesional con panel admin, Auth JWT y carrito optimizado.
                                 </p>
                             </div>
                             
-                            <div className="bg-gray-950 border border-white/20 rounded-[2rem] p-8 md:p-12 flex flex-col justify-center">
-                                <h4 className="text-white text-sm font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Características</h4>
+                            <div className="bg-gray-950 border-[3px] border-white/10 p-8 md:p-12 flex flex-col justify-center transition-colors hover:border-cyan-500 shadow-[-10px_10px_0px_0px_rgba(255,255,255,0.05)]">
+                                <h4 className="text-white text-sm font-black uppercase tracking-[0.3em] mb-6 border-b-2 border-white/10 pb-4">Características</h4>
                                 <ul className="space-y-5">
                                     {["Rutas Protegidas (RBAC)", "API RESTful Rápida", "Gestión de Inventario"].map((feature, i) => (
-                                        <li key={i} className="flex items-center text-gray-400 text-sm md:text-base font-bold uppercase tracking-widest">
-                                            <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 mr-4 shrink-0" />
+                                        <li key={i} className="flex items-center text-gray-400 text-sm md:text-base font-black uppercase tracking-widest">
+                                            <div className="w-3 h-3 bg-cyan-500 mr-4 shrink-0" />
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t border-white/10">
+                                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t-2 border-white/10">
                                     {["React", "FastAPI", "MySQL", "Tailwind"].map(tag => (
-                                        <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-black text-white uppercase tracking-widest">
+                                        <span key={tag} className="px-3 py-1.5 bg-white/5 border-2 border-white/10 text-xs font-black text-white uppercase tracking-widest hover:border-cyan-500 transition-colors">
                                             {tag}
                                         </span>
                                     ))}
@@ -90,29 +109,34 @@ const Projects = () => {
                             </div>
                         </div>
 
-                        {/* Massive Image Container */}
-                        <div className="relative w-full h-[50vh] min-h-[400px] lg:h-[80vh] lg:min-h-[700px] rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl bg-black/40 flex items-center justify-center p-4">
-                            {jluxImages.map((img, index) => (
-                                <img
-                                    key={index}
-                                    src={img}
-                                    alt={`Vista ${index}`}
-                                    className={`absolute inset-0 w-full h-full object-contain p-2 md:p-8 lg:p-12 transition-all duration-[2000ms] ease-out drop-shadow-2xl ${index === jluxIndex ? "opacity-100 scale-100 filter-none" : "opacity-0 scale-95 blur-sm"}`}
+                        {/* Massive Image Container – JLUXURIES: cyan palette */}
+                        <div className="relative w-full h-[45vh] min-h-[320px] md:h-[60vh] lg:h-[80vh] lg:min-h-[700px] overflow-hidden border-[3px] border-cyan-500/40 shadow-[0_0_40px_rgba(34,211,238,0.08)] bg-black flex items-center justify-center p-4 group/img">
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.05)_0%,transparent_60%)] pointer-events-none" />
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={jluxIndex}
+                                    src={jluxImages[jluxIndex]}
+                                    alt={`Vista ${jluxIndex}`}
+                                    loading="lazy"
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 1.05 }}
+                                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                                    className="absolute inset-0 w-full h-full object-contain p-2 md:p-8 lg:p-12 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] will-change-transform"
                                 />
-                            ))}
-                            {/* Gradient strictly at bottom so it doesn't obscure the center app image */}
-                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none opacity-80" />
-                            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20 bg-black/50 p-4 rounded-full backdrop-blur-md border border-white/10">
+                            </AnimatePresence>
+                            <div className="absolute inset-x-0 bottom-0 h-32 md:h-48 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none opacity-90" />
+                            <div className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 gap-3 z-20 bg-black/80 px-5 py-4 border-2 border-cyan-500/30 backdrop-blur-xl transition-transform group-hover/img:scale-110">
                                 {jluxImages.map((_, index) => (
-                                    <div key={index} className={`h-2.5 rounded-full transition-all duration-300 ${index === jluxIndex ? "bg-cyan-400 w-16" : "bg-white/30 w-4 cursor-pointer hover:bg-white/60"}`} onClick={() => setJluxIndex(index)} />
+                                    <div key={index} className={`h-2.5 transition-all duration-500 ${index === jluxIndex ? "bg-cyan-400 w-10" : "bg-white/20 w-2.5 cursor-pointer hover:bg-cyan-400/50"}`} onClick={() => setJluxIndex(index)} />
                                 ))}
                             </div>
                             
                             <button
                                 onClick={() => setActiveProject('jluxuries')}
-                                className="absolute top-8 right-8 z-20 py-4 px-8 bg-cyan-500 hover:bg-cyan-400 text-black font-black uppercase tracking-widest rounded-full transition-all hover:scale-105 active:scale-95 shadow-2xl"
+                                className="absolute top-4 right-4 md:top-8 md:right-8 z-20 py-3 px-5 md:py-5 md:px-10 text-xs md:text-sm bg-cyan-500 hover:bg-white text-black font-black uppercase tracking-widest transition-all hover:-translate-y-2 hover:translate-x-2 shadow-[-6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[-8px_8px_0px_0px_rgba(0,0,0,1)] border-4 border-black active:translate-x-0 active:translate-y-0 active:shadow-none"
                             >
-                                CÓDIGO FUENTE
+                                CÓDIGO
                             </button>
                         </div>
                     </motion.div>
@@ -127,31 +151,31 @@ const Projects = () => {
                     >
                         {/* Top Info Bar */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                            <div className="lg:col-span-2 bg-violet-600 rounded-[2rem] p-8 md:p-12 flex flex-col justify-between hover:scale-[1.01] transition-transform origin-right">
+                            <div className="lg:col-span-2 bg-violet-600 border-[3px] border-white/20 p-8 md:p-12 flex flex-col justify-between hover:scale-[1.01] transition-transform origin-right shadow-[-10px_10px_0px_0px_rgba(139,92,246,0.2)]">
                                 <div className="flex justify-between items-start gap-4">
-                                    <h3 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-none">G-CURLY<br/>BRAND</h3>
-                                    <span className="px-4 py-2 bg-black text-violet-400 text-xs font-black uppercase tracking-widest rounded-full border border-violet-400/30 whitespace-nowrap">
+                                    <h3 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-[0.8] mb-4">G-CURLY<br/>BRAND</h3>
+                                    <span className="px-4 py-2 bg-black text-violet-400 text-xs font-black uppercase tracking-widest border border-violet-400/30 whitespace-nowrap">
                                         BRANDING SPA
                                     </span>
                                 </div>
-                                <p className="mt-8 text-white/90 font-bold text-xl md:text-2xl leading-relaxed max-w-2xl">
+                                <p className="mt-8 text-white font-black text-xl md:text-2xl leading-tight max-w-2xl uppercase italic">
                                     E-commerce y sitio web para centro de belleza enfocado en conversión.
                                 </p>
                             </div>
                             
-                            <div className="bg-gray-950 border border-white/20 rounded-[2rem] p-8 md:p-12 flex flex-col justify-center">
-                                <h4 className="text-white text-sm font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Características</h4>
+                            <div className="bg-gray-950 border-[3px] border-white/10 p-8 md:p-12 flex flex-col justify-center transition-colors hover:border-violet-500 shadow-[-10px_10px_0px_0px_rgba(255,255,255,0.05)]">
+                                <h4 className="text-white text-sm font-black uppercase tracking-[0.3em] mb-6 border-b-2 border-white/10 pb-4">Características</h4>
                                 <ul className="space-y-5">
                                     {["Dark/Light Mode Activo", "Navegación Sticky", "Mobile First"].map((feature, i) => (
-                                        <li key={i} className="flex items-center text-gray-400 text-sm md:text-base font-bold uppercase tracking-widest">
-                                            <div className="w-2.5 h-2.5 rounded-full bg-violet-500 mr-4 shrink-0" />
+                                        <li key={i} className="flex items-center text-gray-400 text-sm md:text-base font-black uppercase tracking-widest">
+                                            <div className="w-3 h-3 bg-violet-500 mr-4 shrink-0" />
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t border-white/10">
+                                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t-2 border-white/10">
                                     {["React 19", "Vite", "Router 7", "Tailwind"].map(tag => (
-                                        <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-black text-white uppercase tracking-widest">
+                                        <span key={tag} className="px-3 py-1.5 bg-white/5 border-2 border-white/10 text-xs font-black text-white uppercase tracking-widest hover:border-violet-500 transition-colors">
                                             {tag}
                                         </span>
                                     ))}
@@ -159,34 +183,40 @@ const Projects = () => {
                             </div>
                         </div>
 
-                        {/* Massive Image Container */}
-                        <div className="relative w-full h-[50vh] min-h-[400px] lg:h-[80vh] lg:min-h-[700px] rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl bg-black/40 flex items-center justify-center p-4 group">
-                            {gcurlyImages.map((img, index) => (
-                                <img
-                                    key={index}
-                                    src={img}
-                                    alt={`G-Curly ${index}`}
-                                    className={`absolute inset-0 w-full h-full object-contain p-2 md:p-8 lg:p-12 transition-all duration-[2000ms] ease-out drop-shadow-2xl ${index === gcurlyIndex ? "opacity-100 scale-100 filter-none" : "opacity-0 scale-95 blur-sm"}`}
+                        {/* Massive Image Container – G-CURLY: violet palette */}
+                        <div className="relative w-full h-[45vh] min-h-[320px] md:h-[60vh] lg:h-[80vh] lg:min-h-[700px] overflow-hidden border-[3px] border-violet-500/40 shadow-[0_0_40px_rgba(139,92,246,0.08)] bg-black flex items-center justify-center p-4 group/img">
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.05)_0%,transparent_60%)] pointer-events-none" />
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={gcurlyIndex}
+                                    src={gcurlyImages[gcurlyIndex]}
+                                    alt={`G-Curly ${gcurlyIndex}`}
+                                    loading="lazy"
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 1.05 }}
+                                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                                    className="absolute inset-0 w-full h-full object-contain p-2 md:p-8 lg:p-12 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] will-change-transform"
                                 />
-                            ))}
-                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none opacity-80" />
-                            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20 bg-black/50 p-4 rounded-full backdrop-blur-md border border-white/10">
+                            </AnimatePresence>
+                            <div className="absolute inset-x-0 bottom-0 h-32 md:h-48 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none opacity-90" />
+                            <div className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 gap-3 z-20 bg-black/80 px-5 py-4 border-2 border-violet-500/30 backdrop-blur-xl transition-transform group-hover/img:scale-110">
                                 {gcurlyImages.map((_, index) => (
-                                    <div key={index} className={`h-2.5 rounded-full transition-all duration-300 ${index === gcurlyIndex ? "bg-violet-400 w-16" : "bg-white/30 w-4 cursor-pointer hover:bg-white/60"}`} onClick={() => setGcurlyIndex(index)} />
+                                    <div key={index} className={`h-2.5 transition-all duration-500 ${index === gcurlyIndex ? "bg-violet-400 w-10" : "bg-white/20 w-2.5 cursor-pointer hover:bg-violet-400/50"}`} onClick={() => setGcurlyIndex(index)} />
                                 ))}
                             </div>
 
-                            <div className="absolute top-8 right-8 z-20 flex flex-col md:flex-row gap-4">
+                            <div className="absolute top-4 right-4 md:top-8 md:right-8 z-20 flex flex-row gap-2 md:gap-4">
                                 <a
                                     href="https://graceful-swan-243221.netlify.app/"
                                     target="_blank"
-                                    className="py-4 px-8 bg-violet-600 hover:bg-violet-500 text-white font-black uppercase tracking-widest rounded-full transition-all hover:scale-105 active:scale-95 shadow-2xl text-center"
+                                    className="py-3 px-4 md:py-5 md:px-10 text-xs md:text-sm bg-violet-600 hover:bg-white hover:text-black font-black uppercase tracking-widest border-4 border-black transition-all hover:-translate-y-2 hover:translate-x-2 shadow-[-6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none text-center"
                                 >
-                                    SITIO WEB
+                                    WEB
                                 </a>
                                 <button
                                     onClick={() => setActiveProject('gcurly')}
-                                    className="py-4 px-8 bg-black/50 backdrop-blur-xl border border-white/20 hover:border-white text-white font-black uppercase tracking-widest rounded-full transition-all hover:scale-105 active:scale-95 shadow-2xl"
+                                    className="py-3 px-4 md:py-5 md:px-10 text-xs md:text-sm bg-black/70 backdrop-blur-xl border-4 border-violet-500/40 hover:border-violet-400 text-white font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
                                 >
                                     CÓDIGO
                                 </button>
@@ -194,31 +224,84 @@ const Projects = () => {
                         </div>
                     </motion.div>
 
-                    {/* PROYECTO 3: CobraGO */}
+                    {/* PROYECTO 3: CobraGO (REAL) */}
                     <motion.div 
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
-                        className="bg-gray-950 border-[3px] border-dashed border-white/20 rounded-[2rem] p-12 lg:p-20 flex flex-col md:flex-row items-center justify-between gap-10 hover:border-orange-500 transition-colors group relative overflow-hidden"
+                        className="flex flex-col gap-6"
                     >
-                        <div className="absolute top-0 right-0 w-full h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.02)_10px,rgba(255,255,255,0.02)_20px)] pointer-events-none"></div>
-                        <div className="flex-1 relative z-10">
-                            <div className="flex items-center gap-6 mb-8">
-                                <h3 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter group-hover:text-orange-500 transition-colors leading-none">COBRAGO</h3>
-                                <div className="flex h-5 w-5 relative shrink-0">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-5 w-5 bg-orange-500"></span>
+                        {/* Top Info Bar */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div className="lg:col-span-2 bg-orange-500 border-[3px] border-black p-8 md:p-12 flex flex-col justify-between hover:scale-[1.01] transition-transform origin-left relative overflow-hidden group/card shadow-[-10px_10px_0px_0px_rgba(249,115,22,0.2)]">
+                                <img src={cobraLogo} alt="Logo CobraGO" className="absolute -right-12 -bottom-10 w-72 opacity-20 group-hover/card:scale-110 transition-transform duration-1000 pointer-events-none will-change-transform" />
+                                <div className="flex justify-between items-start gap-4 relative z-10">
+                                    <div className="flex items-center gap-4">
+                                        <h3 className="text-5xl lg:text-7xl font-black text-black uppercase tracking-tighter leading-[0.8] mb-4">COBRAGO</h3>
+                                        <div className="flex h-5 w-5 relative shrink-0">
+                                            <span className="animate-ping absolute inline-flex h-full w-full bg-black opacity-40"></span>
+                                            <span className="relative inline-flex h-5 w-5 bg-black"></span>
+                                        </div>
+                                    </div>
+                                    <span className="px-4 py-2 bg-black text-orange-400 text-xs font-black uppercase tracking-widest border border-orange-400/30 whitespace-nowrap">
+                                        FINTECH APP
+                                    </span>
+                                </div>
+                                <p className="mt-8 text-black/80 font-black text-xl md:text-2xl leading-tight max-w-2xl relative z-10 uppercase italic">
+                                    App móvil integral para el control de cobros, préstamos y finanzas personales.
+                                </p>
+                            </div>
+                            
+                            <div className="bg-gray-950 border-[3px] border-white/10 p-8 md:p-12 flex flex-col justify-center transition-colors hover:border-orange-500 shadow-[-10px_10px_0px_0px_rgba(255,255,255,0.05)]">
+                                <h4 className="text-white text-sm font-black uppercase tracking-[0.3em] mb-6 border-b-2 border-white/10 pb-4">Características</h4>
+                                <ul className="space-y-5">
+                                    {["Sincronización Tiempo Real", "Gestión de Cartera Local", "Dashboard Estadístico"].map((feature, i) => (
+                                        <li key={i} className="flex items-center text-gray-400 text-sm md:text-base font-black uppercase tracking-widest">
+                                            <div className="w-3 h-3 bg-orange-500 mr-4 shrink-0" />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t-2 border-white/10">
+                                    {["React Native", "Expo", "FastAPI", "PostgreSQL"].map(tag => (
+                                        <span key={tag} className="px-3 py-1.5 bg-white/5 border-2 border-white/10 text-xs font-black text-white uppercase tracking-widest hover:border-orange-500 transition-colors">
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
-                            <p className="text-xl md:text-2xl font-bold uppercase tracking-widest text-gray-400 max-w-2xl leading-relaxed group-hover:text-white transition-colors">
-                                App móvil para el control integral de finanzas y cobros. Sincronización en tiempo real con UI inmersiva.
-                            </p>
                         </div>
-                        <div className="shrink-0 relative z-10 hidden md:block">
-                            <div className="w-48 h-48 rounded-[2rem] border-2 border-orange-500/30 flex items-center justify-center text-orange-500 font-black text-2xl md:text-4xl uppercase tracking-tighter bg-orange-500/10 group-hover:scale-105 group-hover:-rotate-6 transition-all text-center leading-[0.8]">
-                                PRÓXI<br/>MAMENTE
+
+                        {/* Massive Image Container – CobraGO: orange palette */}
+                        <div className="relative w-full h-[45vh] min-h-[320px] md:h-[60vh] lg:h-[80vh] lg:min-h-[700px] overflow-hidden border-[3px] border-orange-500/40 shadow-[0_0_40px_rgba(249,115,22,0.08)] bg-black flex items-center justify-center p-4 group/img">
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(249,115,22,0.05)_0%,transparent_60%)] pointer-events-none" />
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={cobraIndex}
+                                    src={cobraImages[cobraIndex]}
+                                    alt={`CobraGO ${cobraIndex}`}
+                                    loading="lazy"
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 1.05 }}
+                                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                                    className="absolute inset-0 w-full h-full object-contain p-2 md:p-8 lg:p-12 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] will-change-transform"
+                                />
+                            </AnimatePresence>
+                            <div className="absolute inset-x-0 bottom-0 h-32 md:h-48 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none opacity-90" />
+                            <div className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 gap-3 z-20 bg-black/80 px-5 py-4 border-2 border-orange-500/30 backdrop-blur-xl transition-transform group-hover/img:scale-110">
+                                {cobraImages.map((_, index) => (
+                                    <div key={index} className={`h-2.5 transition-all duration-500 ${index === cobraIndex ? "bg-orange-400 w-10" : "bg-white/20 w-2.5 cursor-pointer hover:bg-orange-400/50"}`} onClick={() => setCobraIndex(index)} />
+                                ))}
                             </div>
+
+                            <button
+                                onClick={() => setActiveProject('cobrago')}
+                                className="absolute top-4 right-4 md:top-8 md:right-8 z-20 py-3 px-5 md:py-5 md:px-10 text-xs md:text-sm bg-orange-500 hover:bg-white text-black font-black uppercase tracking-widest border-4 border-black transition-all hover:-translate-y-2 hover:translate-x-2 shadow-[-6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[-8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none"
+                            >
+                                CÓDIGO
+                            </button>
                         </div>
                     </motion.div>
                 </div>
@@ -254,29 +337,50 @@ const Projects = () => {
 
                         <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-12 text-center md:text-left">
                             CÓDIGO FUENTE DE<br/>
-                            <span className="text-gray-500">{activeProject === 'jluxuries' ? 'JLUXURIES' : 'G-CURLY'}</span>
+                            <span className={`transition-colors duration-500 ${activeProject === 'jluxuries' ? 'text-cyan-400' : activeProject === 'gcurly' ? 'text-violet-400' : 'text-orange-400'}`}>
+                                {activeProject.toUpperCase()}
+                            </span>
                         </h3>
 
                         <div className="space-y-6">
                             <a
-                                href={activeProject === 'jluxuries' ? "https://github.com/JorgeAndresDev/JLUXURIES-API.git" : "#"}
+                                href={
+                                    activeProject === 'jluxuries' ? "https://github.com/JorgeAndresDev/JLUXURIES-API.git" : 
+                                    activeProject === 'cobrago' ? "https://github.com/JorgeAndresDev/API-cobrago.git" : "#"
+                                }
                                 target="_blank"
-                                className="block w-full py-8 px-10 border-4 border-white/10 hover:border-cyan-400 bg-[#050505] transition-all group hover:scale-[1.02]"
+                                className={`block w-full py-8 px-10 border-4 border-white/10 bg-[#050505] transition-all group hover:scale-[1.02] ${
+                                    activeProject === 'jluxuries' ? 'hover:border-cyan-400' : 
+                                    activeProject === 'gcurly' ? 'hover:border-violet-400' : 'hover:border-orange-400'
+                                }`}
                             >
                                 <div className="flex justify-between items-center text-white font-black text-xl md:text-2xl uppercase tracking-widest">
-                                    <span>Backend API</span>
-                                    <span className="text-cyan-500 group-hover:translate-x-4 transition-transform text-4xl leading-none">→</span>
+                                    <span>Backend / API</span>
+                                    <span className={`${
+                                        activeProject === 'jluxuries' ? 'text-cyan-500' : 
+                                        activeProject === 'gcurly' ? 'text-violet-500' : 'text-orange-500'
+                                    } group-hover:translate-x-4 transition-transform text-4xl leading-none`}>→</span>
                                 </div>
                             </a>
 
                             <a
-                                href={activeProject === 'jluxuries' ? "https://github.com/JorgeAndresDev/JLUXURIES-Front" : "#"}
+                                href={
+                                    activeProject === 'jluxuries' ? "https://github.com/JorgeAndresDev/JLUXURIES-Front" : 
+                                    activeProject === 'cobrago' ? "https://github.com/JorgeAndresDev/cobrago-mobile.git" : 
+                                    activeProject === 'gcurly' ? "https://github.com/JorgeAndresDev/G-CURLY.git" : "#"
+                                }
                                 target="_blank"
-                                className="block w-full py-8 px-10 border-4 border-white/10 hover:border-violet-400 bg-[#050505] transition-all group hover:scale-[1.02]"
+                                className={`block w-full py-8 px-10 border-4 border-white/10 bg-[#050505] transition-all group hover:scale-[1.02] ${
+                                    activeProject === 'jluxuries' ? 'hover:border-cyan-400' : 
+                                    activeProject === 'gcurly' ? 'hover:border-violet-400' : 'hover:border-orange-400'
+                                }`}
                             >
                                 <div className="flex justify-between items-center text-white font-black text-xl md:text-2xl uppercase tracking-widest">
-                                    <span>Frontend WEB</span>
-                                    <span className="text-violet-500 group-hover:translate-x-4 transition-transform text-4xl leading-none">→</span>
+                                    <span>Frontend / APP</span>
+                                    <span className={`${
+                                        activeProject === 'jluxuries' ? 'text-cyan-500' : 
+                                        activeProject === 'gcurly' ? 'text-violet-500' : 'text-orange-500'
+                                    } group-hover:translate-x-4 transition-transform text-4xl leading-none`}>→</span>
                                 </div>
                             </a>
                         </div>

@@ -108,7 +108,7 @@ const Home = () => {
       <Skills />
       <Projects />
 
-      <section id="contact" className="relative py-32 px-6 bg-cyan-500 overflow-hidden text-black selection:bg-black selection:text-cyan-500">
+      <section id="contact" className="relative py-24 md:py-32 px-6 bg-cyan-500 overflow-hidden text-black selection:bg-black selection:text-cyan-500">
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-none opacity-20 pointer-events-none">
           <Marquee speed={80} autoFill>
             <span className="text-[20vw] font-black uppercase tracking-tighter whitespace-nowrap mx-8">
@@ -117,25 +117,47 @@ const Home = () => {
           </Marquee>
         </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto min-h-[50vh] flex flex-col justify-center items-center text-center mt-24">
-          <p className="text-sm md:text-base uppercase tracking-[0.4em] font-bold mb-6 border border-black px-6 py-2 rounded-full">
+        <div className="relative z-10 max-w-[1400px] mx-auto min-h-[50vh] flex flex-col justify-center items-center text-center mt-16 md:mt-24">
+          <p className="text-sm md:text-base uppercase tracking-[0.4em] font-black mb-6 border-2 border-black px-6 py-2">
             ESTÁS LISTO PARA INICIAR?
           </p>
-          <h2 className="text-6xl sm:text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-12 mix-blend-color-burn">
+          <h2 className="text-5xl sm:text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-10 md:mb-12 mix-blend-color-burn">
             DISEÑEMOS <br/>
             TU PRÓXIMA <br/>
             <span className="text-white mix-blend-normal">PLATAFORMA</span>.
           </h2>
 
-          <div className="flex flex-col sm:flex-row gap-6 w-full max-w-xl justify-center mt-8">
-            <a href="mailto:jorgeandresg1207@gmail.com" className="group rounded-full bg-black px-10 py-6 font-black text-white text-xl transition-transform hover:scale-110 active:scale-95 shadow-2xl flex-1 uppercase tracking-wider flex items-center justify-center gap-3">
-              <span className="group-hover:animate-bounce">✉</span>
-              Contáctame
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl mt-4">
+            <a
+              href="mailto:jorgeandreg1207@gmail.com"
+              className="group bg-black px-6 py-5 font-black text-white text-sm md:text-base transition-all hover:-translate-y-2 hover:translate-x-2 shadow-[-6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[-10px_10px_0px_0px_rgba(0,0,0,0.5)] active:translate-x-0 active:translate-y-0 uppercase tracking-widest flex items-center justify-center gap-2 border-4 border-black"
+            >
+              <span className="text-cyan-400 text-lg">✉</span>
+              EMAIL
             </a>
-            <a href="https://www.linkedin.com/in/jorge-andresdev" target="_blank" rel="noreferrer" className="rounded-full border-4 border-black px-10 py-6 font-black text-black text-xl transition hover:bg-black hover:text-white flex-1 uppercase tracking-wider flex items-center justify-center">
-              LinkedIn
+            <a
+              href="https://wa.me/573043127385"
+              target="_blank"
+              rel="noreferrer"
+              className="group bg-black px-6 py-5 font-black text-white text-sm md:text-base transition-all hover:-translate-y-2 hover:translate-x-2 shadow-[-6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[-10px_10px_0px_0px_rgba(0,0,0,0.5)] active:translate-x-0 active:translate-y-0 uppercase tracking-widest flex items-center justify-center gap-2 border-4 border-black"
+            >
+              <span className="text-green-400 text-lg">📲</span>
+              WHATSAPP
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jorge-andresdev/"
+              target="_blank"
+              rel="noreferrer"
+              className="group border-4 border-black px-6 py-5 font-black text-black text-sm md:text-base transition-all hover:bg-black hover:text-white hover:-translate-y-2 hover:translate-x-2 shadow-[-6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[-10px_10px_0px_0px_rgba(0,0,0,0.5)] active:translate-x-0 active:translate-y-0 uppercase tracking-widest flex items-center justify-center gap-2"
+            >
+              <span className="text-lg">in</span>
+              LINKEDIN
             </a>
           </div>
+
+          <p className="mt-8 text-black/60 font-bold text-sm uppercase tracking-widest">
+            jorgeandreg1207@gmail.com · +57 304 312 7385
+          </p>
         </div>
       </section>
     </>

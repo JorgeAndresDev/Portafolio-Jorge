@@ -59,7 +59,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <span className="inline-block border text-xs font-bold uppercase tracking-widest text-cyan-500 border-cyan-500/50 px-4 py-2 rounded-full mb-6">
+          <span className="inline-block border-2 text-xs font-black uppercase tracking-[0.3em] text-cyan-500 border-cyan-500 px-6 py-2 mb-6 shadow-[4px_4px_0px_0px_rgba(34,211,238,0.2)]">
             Núcleo Técnico
           </span>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase text-white tracking-tighter leading-none">
@@ -81,7 +81,7 @@ const Skills = () => {
             <motion.div
               variants={itemVariants}
               key={block.category}
-              className={`rounded-[2rem] border ${block.border} ${block.bg} p-8 flex flex-col justify-between group overflow-hidden relative shadow-2xl origin-bottom transition-transform duration-300 hover:scale-[1.03]`}
+              className={`border-[3px] ${block.border} ${block.bg} p-8 flex flex-col justify-between group overflow-hidden relative shadow-2xl origin-bottom transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[-10px_10px_0px_0px_rgba(255,255,255,0.1)]`}
             >
               <div className={`relative z-10 ${block.text}`}>
                 <p className="text-xs uppercase tracking-widest font-bold opacity-70 mb-2">

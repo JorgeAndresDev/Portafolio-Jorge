@@ -34,7 +34,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <a href="#contact" className="hidden md:inline-flex items-center justify-center bg-white px-6 py-2.5 text-xs font-black uppercase tracking-widest text-black transition-transform hover:scale-105 active:scale-95 border-2 border-transparent hover:border-cyan-400 hover:bg-black hover:text-cyan-400 rounded-full">
+        <a href="#contact" className="hidden md:inline-flex items-center justify-center bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition-all hover:-translate-y-1 hover:translate-x-1 hover:shadow-[-6px_6px_0px_0px_#22d3ee] active:translate-x-0 active:translate-y-0 active:shadow-none border-2 border-black">
           <span>HABLEMOS</span>
         </a>
       </div>
