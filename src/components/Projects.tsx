@@ -8,11 +8,15 @@ import panelAdmin from "../assets/jlux-img/Panel-admin.png"
 import product from "../assets/jlux-img/product.png"
 import jluxLogo from "../assets/jlux-img/logo-jluxuries.png"
 
-import curlyDark from "../assets/g-curly-img/dark.png"
-import curlyIndex from "../assets/g-curly-img/index.png"
-import curlyRoon from "../assets/g-curly-img/roon.png"
-import curlyRutine from "../assets/g-curly-img/rutine.png"
-import curlyStore from "../assets/g-curly-img/store.png"
+import gcurly1 from "../assets/g-curly-img/1.png"
+import gcurly2 from "../assets/g-curly-img/2.png"
+import gcurly3 from "../assets/g-curly-img/3.png"
+import gcurly4 from "../assets/g-curly-img/4.png"
+import gcurly5 from "../assets/g-curly-img/5.png"
+import gcurly6 from "../assets/g-curly-img/6.png"
+import gcurly7 from "../assets/g-curly-img/7.png"
+import gcurly8 from "../assets/g-curly-img/8.png"
+import gcurly9 from "../assets/g-curly-img/9.png"
 
 // CobraGO Images
 import cobraLogo from "../assets/cobrago-img/logo-cobrago.png"
@@ -36,7 +40,7 @@ const Projects = () => {
     const [cobraIndex, setCobraIndex] = useState(0)
 
     const jluxImages = useMemo(() => [indexImg, login, product, panelAdmin, crudProducts, carrusel], [])
-    const gcurlyImages = useMemo(() => [curlyIndex, curlyDark, curlyStore, curlyRutine, curlyRoon], [])
+    const gcurlyImages = useMemo(() => [gcurly1, gcurly2, gcurly3, gcurly4, gcurly5, gcurly6, gcurly7, gcurly8, gcurly9], [])
     const cobraImages = useMemo(() => [cobra1, cobra2, cobra3, cobra4, cobra5, cobra6, cobra7, cobra8, cobra9, cobra10, cobra11, cobra12], [])
 
     useEffect(() => {
