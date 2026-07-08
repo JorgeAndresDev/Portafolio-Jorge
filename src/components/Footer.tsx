@@ -18,7 +18,7 @@ const Footer = () => {
         </ul>
 
         <div className="text-xs font-bold uppercase tracking-widest text-gray-500 text-center md:text-right">
-          © {currentYear} • JORGE GÓMEZ DEV.<br className="md:hidden" /> ALL RIGHTS RESERVED.
+          © {currentYear} • JORGE GÓMEZ DEV. ALL RIGHTS RESERVED.
         </div>
       </div>
     </footer>

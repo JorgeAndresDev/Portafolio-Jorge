@@ -10,10 +10,10 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="lg:col-span-2 lg:row-span-2 bg-gray-950 border-[3px] border-white/10 p-10 md:p-16 flex flex-col justify-between group hover:border-cyan-400 transition-colors shadow-[-10px_10px_0px_0px_rgba(34,211,238,0.1)]"
+          className="lg:col-span-2 lg:row-span-2 bg-gray-950 border-[3px] border-white/10 p-10 md:p-16 flex flex-col justify-between group hover:border-cyan-400 transition-colors shadow-[-10px_10px_0px_0px_rgba(26,128,255,0.1)]"
         >
           <div>
-            <span className="inline-flex bg-cyan-500 px-4 py-2 text-xs font-black uppercase tracking-widest text-black">
+            <span className="inline-flex bg-cyan-500 px-4 py-2 text-xs font-black uppercase tracking-widest text-white">
               ¿Quién Soy?
             </span>
             <h2 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter text-white leading-[0.9]">
@@ -45,7 +45,7 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-cyan-500 p-10 flex flex-col justify-center text-black shadow-[-12px_12px_0px_0px_rgba(0,0,0,0.3)] hover:scale-[1.02] transition-transform origin-bottom-right border-[3px] border-black"
+          className="bg-cyan-500 p-10 flex flex-col justify-center text-white shadow-[-12px_12px_0px_0px_rgba(0,0,0,0.3)] hover:scale-[1.02] transition-transform origin-bottom-right border-[3px] border-black"
         >
             <h3 className="text-4xl font-black uppercase leading-none tracking-tighter">Impacto<br/>Real</h3>
             <p className="mt-4 font-bold text-black/80 leading-relaxed">

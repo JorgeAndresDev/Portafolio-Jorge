@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 pointer-events-auto ${scrolled ? "bg-black/90 backdrop-blur-2xl border-b border-white/20 py-4 shadow-2xl" : "bg-transparent py-8"}`}>
-      <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between gap-6">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-20 flex items-center justify-between gap-6">
         <a href="#home" className="text-2xl font-black uppercase tracking-tighter text-white hover:text-cyan-400 transition-colors">
           Jorge<span className="text-cyan-500">.</span>
         </a>
@@ -34,7 +34,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <a href="#contact" className="hidden md:inline-flex items-center justify-center bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition-all hover:-translate-y-1 hover:translate-x-1 hover:shadow-[-6px_6px_0px_0px_#22d3ee] active:translate-x-0 active:translate-y-0 active:shadow-none border-2 border-black">
+        <a href="#contact" className="hidden md:inline-flex items-center justify-center bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition-all hover:-translate-y-1 hover:translate-x-1 hover:shadow-[-6px_6px_0px_0px_#1a80ff] active:translate-x-0 active:translate-y-0 active:shadow-none border-2 border-black">
           <span>HABLEMOS</span>
         </a>
       </div>

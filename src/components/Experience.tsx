@@ -62,7 +62,7 @@ export const Experience = () => {
 
       <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
         <Box ref={cube2Ref} args={[1.5, 1.5, 1.5]} position={[-3, 1, -2]}>
-          <meshStandardMaterial color="#06b6d4" transparent opacity={0.6} metalness={0.5} roughness={0.2} />
+          <meshStandardMaterial color="#004499" transparent opacity={0.6} metalness={0.5} roughness={0.2} />
         </Box>
       </Float>
 

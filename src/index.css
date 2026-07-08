@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+@theme {
+  --color-cyan-50: #e6f0ff;
+  --color-cyan-100: #cce0ff;
+  --color-cyan-200: #80b8ff;
+  --color-cyan-300: #4d9cff;
+  --color-cyan-400: #1a80ff;
+  --color-cyan-500: #004499;
+  --color-cyan-600: #003a7f;
+  --color-cyan-700: #002f66;
+  --color-cyan-800: #00254c;
+  --color-cyan-900: #001a33;
+  --color-cyan-950: #000f1a;
+}
 
 @layer base {
   html {

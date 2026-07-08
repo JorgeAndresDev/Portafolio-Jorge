@@ -59,7 +59,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <span className="inline-block border-2 text-xs font-black uppercase tracking-[0.3em] text-cyan-500 border-cyan-500 px-6 py-2 mb-6 shadow-[4px_4px_0px_0px_rgba(34,211,238,0.2)]">
+          <span className="inline-block border-2 text-xs font-black uppercase tracking-[0.3em] text-cyan-500 border-cyan-500 px-6 py-2 mb-6 shadow-[4px_4px_0px_0px_rgba(26,128,255,0.2)]">
             Núcleo Técnico
           </span>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase text-white tracking-tighter leading-none">
