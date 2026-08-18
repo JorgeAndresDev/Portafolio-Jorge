@@ -1,25 +1,42 @@
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import Navbar from './layouts/Navbar'
+import Footer from './layouts/Footer'
 import Home from './pages/Home'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Hyperspeed from './components/Hyperspeed'
-import { ReactLenis } from 'lenis/react'
+import ProjectDetail from './pages/ProjectDetail'
+import NotFound from './pages/NotFound'
+
+const ScrollManager = () => {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1))
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname, hash])
+
+  return null
+}
 
 const App = () => {
   return (
-    <ReactLenis root options={{ lerp: 0.08, duration: 1.5, smoothWheel: true }}>
-      <div className="bg-black text-white min-h-screen font-sans selection:bg-cyan-500 selection:text-white relative">
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <Hyperspeed />
-        </div>
-        <div className="relative z-10 w-full overflow-hidden">
-          <Navbar />
-          <main>
-            <Home />
-          </main>
-          <Footer />
-        </div>
-      </div>
-    </ReactLenis>
+    <div className="relative min-h-screen bg-base font-sans text-fg">
+      <ScrollManager />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   )
 }
 

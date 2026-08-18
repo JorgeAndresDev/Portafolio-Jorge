@@ -1,10 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="src/assets/logo/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portafolio-jorgedev</title>
+    <meta name="theme-color" content="#050507" />
+    <meta name="color-scheme" content="dark" />
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('jorge-theme') === 'light') document.documentElement.classList.add('light')
+        } catch (e) {}
+      })()
+    </script>
+    <meta
+      name="description"
+      content="Jorge Andrés Gómez Díaz — Desarrollador Full Stack (React, TypeScript, FastAPI, PostgreSQL). Construyo software que resuelve problemas reales: apps móviles Offline First, plataformas full stack y landing pages de alto impacto."
+    />
+    <meta name="author" content="Jorge Andrés Gómez Díaz" />
+    <meta name="keywords" content="Desarrollador Full Stack, React, React Native, FastAPI, TypeScript, PostgreSQL, Portafolio, Software, Jorge Gómez" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jorge Gómez — Full Stack Developer" />
+    <meta property="og:title" content="Jorge Gómez | Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Construyo software para resolver problemas reales: apps móviles Offline First, plataformas full stack y landing pages de alto impacto."
+    />
+    <meta property="og:url" content="https://portafolio-jorge.vercel.app/" />
+    <meta property="og:image" content="/favicon.png" />
+    <meta property="og:locale" content="es_CO" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Jorge Gómez | Full Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Construyo software para resolver problemas reales: apps móviles Offline First, plataformas full stack y landing pages de alto impacto."
+    />
+    <meta name="twitter:image" content="/favicon.png" />
+
+    <title>Jorge Gómez | Full Stack Developer</title>
   </head>
   <body>
     <div id="root"></div>

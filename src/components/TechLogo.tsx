@@ -1,0 +1,45 @@
+import {
+  SiAxios,
+  SiExpo,
+  SiExpress,
+  SiFastapi,
+  SiFramer,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiMysql,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiSqlite,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+} from 'react-icons/si'
+import type { IconType } from 'react-icons'
+
+const techLogos: Record<string, IconType> = {
+  TypeScript: SiTypescript,
+  Python: SiPython,
+  JavaScript: SiJavascript,
+  React: SiReact,
+  'React Native': SiReact,
+  'Tailwind CSS': SiTailwindcss,
+  HTML5: SiHtml5,
+  Expo: SiExpo,
+  'Framer Motion': SiFramer,
+  FastAPI: SiFastapi,
+  Express: SiExpress,
+  'Node.js': SiNodedotjs,
+  PostgreSQL: SiPostgresql,
+  MySQL: SiMysql,
+  SQLite: SiSqlite,
+  Git: SiGit,
+  GitHub: SiGithub,
+  Axios: SiAxios,
+  Vite: SiVite,
+}
+
+export const getTechLogo = (name: string): IconType | undefined => techLogos[name]
